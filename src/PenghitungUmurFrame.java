@@ -4,6 +4,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,18 +15,15 @@ import javax.swing.JOptionPane;
  * @author DELL
  */
 public class PenghitungUmurFrame extends javax.swing.JFrame {
-
     private PenghitungUmurHelper helper = new PenghitungUmurHelper();
 
-    /**
-     * Creates new form PenghitungUmurFrame
-     */
     public PenghitungUmurFrame() {
         initComponents();
-        setTitle("Aplikasi Perhingan Umur");
+        setTitle("Aplikasi Perhitungan Umur");
         Usaatini.setEditable(false);
         hUltahberikutnya.setEditable(false);
         Usaatini.setFocusable(false);
+        txtAreaPeristiwa.setEditable(false);
         hUltahberikutnya.setFocusable(false);
     }
 
@@ -170,10 +168,10 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(hUltahberikutnya, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addComponent(bKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(202, 228, 241));
@@ -200,7 +198,7 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 153, 153));
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         txtAreaPeristiwa.setColumns(20);
         txtAreaPeristiwa.setRows(20);
@@ -275,10 +273,8 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
                 .toLocalDate();
 
         LocalDate hariIni = LocalDate.now();
-
-        // Hitung umur dengan bantuan helper
-        String hasilUmur = helper.hitungUmurDetail(tanggalLahir, hariIni);
-        Usaatini.setText(hasilUmur);
+        String umur = helper.hitungUmurDetail(tanggalLahir, hariIni);
+        Usaatini.setText(umur);
 
         LocalDate ultahSelanjutnya = helper.hariUlangTahunBerikutnya(tanggalLahir, hariIni);
         String hariUltah = helper.getDayOfWeekInIndonesian(ultahSelanjutnya);
@@ -287,16 +283,37 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
         String tglUltahFormat = ultahSelanjutnya.format(formatter);
 
         hUltahberikutnya.setText(hariUltah + ", " + tglUltahFormat);
+
         try {
             int bulan = tanggalLahir.getMonthValue();
-            int hari = tanggalLahir.getDayOfMonth();
-            String hasilPeristiwa = PenghitungUmurHelper.getPeristiwaPenting(bulan, hari);
-            txtAreaPeristiwa.setText(hasilPeristiwa);
+            int tanggal = tanggalLahir.getDayOfMonth();
 
-        } catch (Exception ex) {
-            txtAreaPeristiwa.setText(" Tidak dapat memuat peristiwa penting.\nPastikan koneksi Anda aktif.");
+            new Thread(() -> {
+                try {
+                    SwingUtilities.invokeLater(() -> {
+                        txtAreaPeristiwa.setText(" Tunggu, Sedang Mengambil Data\n");
+                    });
 
+                    String peristiwa = PenghitungUmurHelper.getPeristiwaPenting(bulan, tanggal);
+
+                    SwingUtilities.invokeLater(() -> {
+                        txtAreaPeristiwa.setText(peristiwa);
+                        txtAreaPeristiwa.setCaretPosition(0);
+                    });
+
+                } catch (Exception e) {
+                    SwingUtilities.invokeLater(() -> {
+                        txtAreaPeristiwa.setText(" Gagal mengambil data: " + e.getMessage());
+                    });
+                }
+            }).start();
+
+        } catch (Exception e) {  // 
+            JOptionPane.showMessageDialog(this,
+                    "Terjadi kesalahan: " + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
+
 
     }//GEN-LAST:event_bHitungActionPerformed
 
