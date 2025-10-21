@@ -38,12 +38,12 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelPilih = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         bHitung = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelUmur = new javax.swing.JLabel();
+        jLabelHultahberikutnya = new javax.swing.JLabel();
         Usaatini = new javax.swing.JTextField();
         hUltahberikutnya = new javax.swing.JTextField();
         bKeluar = new javax.swing.JButton();
@@ -52,7 +52,7 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaPeristiwa = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelPeristiwa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,8 +61,8 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(176, 224, 230));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        jLabel2.setText("Pilih tanggal lahir : ");
+        jLabelPilih.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabelPilih.setText("Pilih tanggal lahir : ");
 
         jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -85,7 +85,7 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jLabelPilih)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
@@ -96,7 +96,7 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel2)
+                .addComponent(jLabelPilih)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(10, Short.MAX_VALUE)
@@ -109,24 +109,12 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(202, 228, 241));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setFont(new java.awt.Font("Malgun Gothic", 1, 14)); // NOI18N
-        jLabel3.setText("Umur anda adalah : ");
+        jLabelUmur.setFont(new java.awt.Font("Malgun Gothic", 1, 14)); // NOI18N
+        jLabelUmur.setText("Umur anda adalah : ");
 
-        jLabel4.setFont(new java.awt.Font("Malgun Gothic", 1, 14)); // NOI18N
-        jLabel4.setText("Hari ulang tahun berikutnya : ");
-        jLabel4.setToolTipText("");
-
-        Usaatini.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsaatiniActionPerformed(evt);
-            }
-        });
-
-        hUltahberikutnya.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hUltahberikutnyaActionPerformed(evt);
-            }
-        });
+        jLabelHultahberikutnya.setFont(new java.awt.Font("Malgun Gothic", 1, 14)); // NOI18N
+        jLabelHultahberikutnya.setText("Hari ulang tahun berikutnya : ");
+        jLabelHultahberikutnya.setToolTipText("");
 
         bKeluar.setBackground(new java.awt.Color(255, 204, 204));
         bKeluar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -145,11 +133,11 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(jLabelUmur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Usaatini))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(jLabelHultahberikutnya)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(hUltahberikutnya)))
                 .addGap(34, 34, 34)
@@ -161,11 +149,11 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabelUmur)
                     .addComponent(Usaatini))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabelHultahberikutnya)
                     .addComponent(hUltahberikutnya, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -206,9 +194,9 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
 
         jPanel5.add(jScrollPane1);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel5.setText("Peristiwa Penting Yang Terjadi");
+        jLabelPeristiwa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelPeristiwa.setForeground(new java.awt.Color(0, 153, 204));
+        jLabelPeristiwa.setText("Peristiwa Penting Yang Terjadi");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -229,7 +217,7 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(173, 173, 173)
-                .addComponent(jLabel5)
+                .addComponent(jLabelPeristiwa)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -242,7 +230,7 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabelPeristiwa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -252,10 +240,6 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void hUltahberikutnyaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hUltahberikutnyaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hUltahberikutnyaActionPerformed
 
     private void bHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHitungActionPerformed
 
@@ -330,15 +314,11 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jDateChooser1PropertyChange
 
-    private void UsaatiniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsaatiniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsaatiniActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -376,10 +356,10 @@ public class PenghitungUmurFrame extends javax.swing.JFrame {
     private javax.swing.JTextField hUltahberikutnya;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelHultahberikutnya;
+    private javax.swing.JLabel jLabelPeristiwa;
+    private javax.swing.JLabel jLabelPilih;
+    private javax.swing.JLabel jLabelUmur;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
